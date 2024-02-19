@@ -13,6 +13,20 @@ connectDB();
 // Middleware
 app.use(express.json({ extended: false }));
 
+// Middleware function to log requests
+const requestLoggerMiddleware = (req, res, next) => {
+  const timestamp = new Date().toISOString();
+  const { method, url, headers } = req;
+  const accessToken = headers["authorization"] || "No access token provided";
+  console.log(
+    `[${timestamp}] ${method}: ${url}, AccessToken: "${accessToken}"`
+  );
+  next();
+};
+
+// Apply the middleware globally to all routes
+app.use(requestLoggerMiddleware);
+
 // GET: Retrieve all users
 app.get("/users", async (req, res) => {
   try {

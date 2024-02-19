@@ -1,99 +1,52 @@
-#  REST API with Node.js and Express
+# Express Middleware Logger
 
-## UserProfileAPI
+This Express application includes a middleware function that logs the request method, URL, access token (if provided), and timestamp for every request to the server. The middleware is applied globally to all routes in the Express application.
 
-UserProfileAPI is a RESTful API developed with Node.js and Express, designed to manage user profiles in a MongoDB database. It supports creating, reading, updating, and deleting (CRUD) user profiles with fields for name, email, age, country, and password.
+## Requirements
 
-## Approach
-
-The API is built on the MVC architecture to ensure a separation of concerns. Models define the schema for user data, controllers handle the business logic, and routes manage the API endpoints. Passwords are hashed before storage and excluded from API responses to enhance security.
-
-## Features
-
-- CRUD operations for user profiles
-- Password hashing with bcryptjs
-- Validation of email formats
-- Exclusion of passwords from API responses
-
-## Getting Started
-
-Pre-requisites:
 - Node.js
-- MongoDB
-- NPM or Yarn (Node Package Manager or Yarn Package Manager)
-
+- Express
+- Nodemon (optional)
+- MongoDB instance for database storage (optional)
 
 ## Installation
 
-1. Clone the repository
-
-```bash
-git clone 
-```
-
-2. Install dependencies
-
-```bash
-npm install
-```
-
-3. Start the server
-
-```bash
-npm start
-```
+1. Clone this repository to your local machine.
+2. Run `npm install` to install the required dependencies.
+3. Run `npm start` to start the server.
 
 ## Usage
 
-The API can be accessed at http://localhost:3000/api/users
+Once the server is running, you can send HTTP requests to the provided routes. The middleware will log each request's method, URL, and access token (if provided) to the console in the specified format.
 
-Endpoints:
+### Routes
 
-| Method | Endpoint      | Description                   | Body                                                                                                             |
-|--------|---------------|-------------------------------|------------------------------------------------------------------------------------------------------------------|
-| GET    | /users        | Fetch all user profiles       | N/A                                                                                                              |
-| POST   | /users        | Create a new user profile     | { "name": "John Doe", "email": "john@example.com", "age": 30, "country": "USA", "password": "password123" }    |
-| PUT    | /users/:id    | Update an existing user profile | { "name": "Jane Doe", "email": "jane@example.com", "age": 25, "country": "Canada" }                             |
-| DELETE | /users/:id    | Delete an existing user profile | N/A                                                                                                              |
+- `GET /users` - Retrieve all users
+- `POST /users` - Create a new user
+- `GET /users/:id` - Retrieve a single user by ID
+- `PUT /users/:id` - Update a user by ID
+- `DELETE /users/:id` - Delete a user by ID
 
-## Sample Data for Testing
+## Logging Format
 
-Create a new user profile:
-
-- POST /users
+The middleware logs the request method, URL, access token (if provided), and timestamp for every request to the server. The log is formatted as follows:
 
 ```bash
-{
-  "name": "John Doe",
-  "email": "john.doe@example.com",
-  "age": 28,
-  "country": "USA",
-  "password": "securePassword123"
-}  "password": "password123"
+[Timestamp] Method: URL, AccessToken: "accessToken"
 ```
 
-Update an existing user profile:
-
-- PUT /users/<user-id>
+if no access token is provided, the log will be formatted as follows:
 
 ```bash
-{
-  "name": "Jane Doe",
-  "age": 29,
-  "country": "Canada"
-}
-```
-Get all user profiles:
-
-- GET /users
-```bash
-N/A
+[Timestamp] Method: URL
 ```
 
-Delete an existing user profile:
+## Dependencies
 
-- DELETE /users/<user-id>
-```bash
-N/A
-```
+- express: Web framework for Node.js
+- mongoose: MongoDB object modeling tool for Node.js
+- dotenv: Loads environment variables from a .env file
 
+## Author
+
+Rajkumar Khatua
