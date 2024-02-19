@@ -18,6 +18,8 @@ This Express application includes a middleware function that logs the request me
 ## Usage
 
 Once the server is running, you can send HTTP requests to the provided routes. The middleware will log each request's method, URL, and access token (if provided) to the console in the specified format.
+Live Deployed API Endpoint can be accessed [here](https://express-middleware-logger.vercel.app/).
+User Profiles
 
 ### Routes
 
@@ -46,6 +48,13 @@ if no access token is provided, the log will be formatted as follows:
 - express: Web framework for Node.js
 - mongoose: MongoDB object modeling tool for Node.js
 - dotenv: Loads environment variables from a .env file
+
+
+## Live Deployed Endpoint
+
+You can access the API via the following live deployed endpoint:
+
+[https://express-middleware-logger.vercel.app/](https://express-middleware-logger.vercel.app/)
 
 ## Author
 
